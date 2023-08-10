@@ -9,6 +9,7 @@ int main() {
     /* Figure out the key by brute-force approach */
     find_key(message);
 
+    /* Decode text from stdin */
     decode_rot13_from_stdin();
     return 0;
 }

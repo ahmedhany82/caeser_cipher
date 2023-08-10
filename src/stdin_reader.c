@@ -5,7 +5,8 @@
 #include "rot13.h"
 
 
-// Free allocated memory
+/* Free allocated memory in case of errors
+ * before end of function */
 void cleanup(char **input, int num_lines) {
     for (int i = 0; i < num_lines; ++i) {
         free(input[i]);
@@ -13,6 +14,7 @@ void cleanup(char **input, int num_lines) {
     free(input);
 }
 
+/* Decodes text from stdin */
 void decode_rot13_from_stdin() {
     int num_lines;
     char num_lines_c[100];
