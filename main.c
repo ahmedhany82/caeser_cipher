@@ -1,6 +1,5 @@
-#include <stdio.h>
 #include "find_key.h"
-#include "rot13.h"
+#include "stdin_reader.h"
 
 int main() {
     char *message = "sbe bhe grnz oneorphr!\n"
@@ -9,7 +8,7 @@ int main() {
 
     /* Figure out the key by brute-force approach */
     find_key(message);
-    char *result = decode_rot13(message);
-    printf("\n%s", result);
+
+    decode_rot13_from_stdin();
     return 0;
 }
