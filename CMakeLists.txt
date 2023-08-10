@@ -7,12 +7,7 @@ set(SOURCES
     main.c
     rot13.c
     find_key.c
-    )
-
-set(HEADERS
-    rot13.h
-    find_key.h
-    )
+    stdin_reader.c)
 
 add_executable(caeser_cipher ${SOURCES})
 target_include_directories(caeser_cipher PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
