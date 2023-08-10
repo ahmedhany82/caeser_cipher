@@ -2,6 +2,8 @@
 #define CAESER_CIPHER_STDIN_READER_H
 
 #define MAX_LINE_LENGTH 100
+#define MAX_LINES 100
+
 void decode_rot13_from_stdin();
 
 #endif //CAESER_CIPHER_STDIN_READER_H

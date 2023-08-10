@@ -15,14 +15,23 @@ void cleanup(char **input, int num_lines) {
 
 void decode_rot13_from_stdin() {
     int num_lines;
+    char num_lines_c[100];
     char **input;
 
     printf("\n\nEnter the number of lines you want to enter: ");
-    scanf("%d", &num_lines);
 
-    // Clear the input buffer
-    int c;
-    while ((c = getchar()) != '\n' && c != EOF);
+    if (fgets(num_lines_c, sizeof(num_lines_c), stdin) != NULL) {
+        long int result = strtol(num_lines_c, NULL, 10);
+        if (result <= 0 || result > MAX_LINES) {
+            printf("Invalid number of lines.\n");
+            return;
+        }
+        num_lines = (int)result;
+
+    } else {
+        printf("Error occurred while reading input.\n");
+        return;
+    }
 
     input = (char **)malloc(num_lines * sizeof(char *));
     if (input == NULL) {
