@@ -1,7 +1,7 @@
-#ifndef ROT13_H
-#define ROT13_H
+#ifndef CAESER_CIPHER_ROT13_H
+#define CAESER_CIPHER_ROT13_H
 
 char *decode_rot13(const char *src);
 
-#endif
+#endif //CAESER_CIPHER_ROT13_H
 
