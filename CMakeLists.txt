@@ -3,4 +3,16 @@ project(caeser_cipher C)
 
 set(CMAKE_C_STANDARD 17)
 
-add_executable(caeser_cipher main.c)
+set(SOURCES
+    main.c
+    rot13.c
+    find_key.c
+    )
+
+set(HEADERS
+    rot13.h
+    find_key.h
+    )
+
+add_executable(caeser_cipher ${SOURCES})
+target_include_directories(caeser_cipher PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
