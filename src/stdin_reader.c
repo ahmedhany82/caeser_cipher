@@ -7,8 +7,8 @@
 
 /* Free allocated memory in case of errors
  * before end of function */
-void cleanup(char **input, int num_lines) {
-    for (int i = 0; i < num_lines; ++i) {
+void cleanup(char **input, int start, int num_lines) {
+    for (int i = start; i < num_lines; ++i) {
         free(input[i]);
     }
     free(input);
@@ -52,12 +52,12 @@ void decode_rot13_from_stdin() {
                 strcpy(input[i], line);
             } else {
                 printf("Memory allocation error.\n");
-                cleanup(input, i);
+                cleanup(input, 0,i);
                 return;
             }
         } else {
             printf("Error occurred while reading input.\n");
-            cleanup(input, i);
+            cleanup(input, 0,i);
             return;
         }
     }
@@ -71,7 +71,8 @@ void decode_rot13_from_stdin() {
             free(input[i]);
         } else {
             printf("Error occurred during ROT13 encoding.\n");
-            break;
+            cleanup(input, i, num_lines);
+            return;
         }
     }
     free(input);
